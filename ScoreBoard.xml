@@ -1,0 +1,77 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/UI.xsd">
+
+	<EditBox name="AdvScore_EditBoxTemplate" inherits="UIPanelEditBoxTemplate" frameStrata="TOOLTIP" virtual="true">
+		<Size>
+			<AbsDimension x="100" y="10"/>
+		</Size>
+		<FontString inherits="GameFontNormalSmall" justifyH="CENTER" />
+		<TextInsets>
+			<AbsInset left="20" right="20" top="0" bottom="0"/>
+		</TextInsets>
+		<Scripts>
+			<OnTextChanged>
+				AdvScoreBoard_OnFilterChange()
+			</OnTextChanged>
+			<OnEnterPressed>
+				this:ClearFocus();
+				AdvScoreBoard_OnFilter(this:GetID())
+			</OnEnterPressed>
+			<OnTabPressed>
+				local id = this:GetID()
+				if id == 1 then
+					AdvScoreFilterGuild:SetFocus()
+				elseif IsShiftKeyDown() then
+					AdvScoreFilterName:SetFocus()
+				else
+					this:ClearFocus();
+				end
+			</OnTabPressed>
+		</Scripts>
+	</EditBox>
+	
+	<!--<Frame name"AdvScoreFilter" parent="SSB_Frame">
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="AdvScoreFilterCount" inherits="GameFontNormalSmall" justifyH="CENTER" text="0/0">
+					<Anchors>
+						<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="SSB_Item10_Rank1">
+							<Offset><AbsDimension x="0" y="10"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>-->
+	
+	<EditBox name="AdvScoreFilterCount" inherits="UIPanelEditBoxTemplate" enabled="false" parent="SSB_Frame">
+		<Size>
+			<AbsDimension x="60" y="10"/>
+		</Size>
+		<FontString inherits="GameFontNormalSmall" justifyH="CENTER" />
+		<Anchors>
+			<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="SSB_Item10_Rank1">
+				<Offset><AbsDimension x="0" y="10"/></Offset>
+			</Anchor>
+		</Anchors>
+		<TextInsets>
+			<AbsInset left="10" right="0" top="0" bottom="0"/>
+		</TextInsets>
+	</EditBox>
+	
+	<EditBox name="AdvScoreFilterName" id="1" inherits="AdvScore_EditBoxTemplate" parent="SSB_Frame">
+		<Anchors>
+			<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="SSB_Item10_Name">
+				<Offset><AbsDimension x="0" y="10"/></Offset>
+			</Anchor>
+		</Anchors>
+	</EditBox>
+	
+	<EditBox name="AdvScoreFilterGuild" id="2" inherits="AdvScore_EditBoxTemplate" parent="SSB_Frame">
+		<Anchors>
+			<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="SSB_Item10_Guild">
+				<Offset><AbsDimension x="0" y="10"/></Offset>
+			</Anchor>
+		</Anchors>
+	</EditBox>
+
+</Ui>

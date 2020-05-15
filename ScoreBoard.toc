@@ -1,0 +1,9 @@
+## Title: AdvScoreBoard
+## Version: 0.1-up.1
+## Author: tasquer
+ScoreBoard.lua
+ScoreBoard.xml
+-- X-Curse-Packaged-Version: r3
+-- X-Curse-Project-Name: AdvScoreBoard
+-- X-Curse-Project-ID: advscoreboard
+-- X-Curse-Repository-ID: rom/advscoreboard/mainline
